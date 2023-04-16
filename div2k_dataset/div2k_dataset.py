@@ -3,8 +3,8 @@ import glob
 import torch
 from torch.utils.data import Dataset
 
-import bsrgan_degradation.utils_image as util
-import bsrgan_degradation.utils_blindsr as blindsr
+import bsrgan_degradation_model.utils.utils_image as util
+import bsrgan_degradation_model.utils.utils_blindsr as blindsr
 
 
 class Div2KDataset(Dataset):
