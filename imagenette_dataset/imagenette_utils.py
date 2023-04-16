@@ -32,12 +32,13 @@ DATA_LINK_2_NAME = {
 }
 
 
-def get_imagenette_data(to_download=URLs.IMAGENETTE):
-    if DATA_LINK_2_NAME[to_download] in os.listdir("."):
+def get_imagenette_data(to_download=URLs.IMAGENETTE, parent_dir="./imagenette_data"):
+    os.makedirs(parent_dir, exist_ok=True)
+    if DATA_LINK_2_NAME[to_download] in os.listdir(parent_dir):
         return
-    path = untar_data(URLs.IMAGENETTE_160)  # extract the data
+    path = untar_data(to_download)  # extract the data
     path = str(path)  # get the path as a string
-    new_path = shutil.move(path, ".")  # move from default fastai location to working dir
+    new_path = shutil.move(path, os.path.join(parent_dir, to_download))  # move from default fastai location
     return new_path
 
 
