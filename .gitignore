@@ -138,3 +138,6 @@ dmypy.json
 div2k_dataset/div2k_data/
 # ImageNette
 imagenette_dataset/imagenette_data/
+
+# ignore any jupyter notebooks
+*.ipynb

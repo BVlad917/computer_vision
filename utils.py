@@ -1,7 +1,8 @@
 import time
 import torch
-from torch.utils.data import DataLoader
+import numpy as np
 from tqdm import tqdm
+from torch.utils.data import DataLoader
 
 
 # ImageNet RGB mean and std
@@ -92,3 +93,13 @@ def get_device():
 def get_dataloader(dset, batch_size=32, shuffle=True, num_workers=0):
     dl = DataLoader(dset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
     return dl
+
+
+def tensor_2_numpy(t):
+    # convert a (C, H, W) pytorch tensor to a (H, W, C) numpy array
+    return torch.permute(t, (1, 2, 0)).numpy()
+
+
+def numpy_2_tensor(arr):
+    # convert a (H, W, C) numpy array to a (C, H, W) pytorch tensor
+    return torch.from_numpy(np.transpose(arr, (0, 1, 2)))
