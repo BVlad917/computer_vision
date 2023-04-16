@@ -1,4 +1,4 @@
-# Computer Vision Training Templates
+# Computer Vision Training and Data Templates
 
 PyTorch dataset and dataloaders template implementations.
 

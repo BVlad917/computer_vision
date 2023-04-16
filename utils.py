@@ -1,5 +1,6 @@
 import time
 import torch
+from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 
@@ -86,3 +87,8 @@ def test_step(model, data_loader, loss_fn, accuracy_fn, device, use_tqdm=False):
 def get_device():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     return torch.device(device)
+
+
+def get_dataloader(dset, batch_size=32, shuffle=True, num_workers=0):
+    dl = DataLoader(dset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
+    return dl

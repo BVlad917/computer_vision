@@ -1,0 +1,3 @@
+[submodule "div2k_dataset/bsrgan_degradation"]
+	path = div2k_dataset/bsrgan_degradation
+	url = git@github.com:BVlad917/bsrgan_degradation.git

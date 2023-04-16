@@ -1,15 +1,15 @@
 import os
 import cv2
 import glob
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 
 from imagenette_dataset.imagenette_utils import LBL_2_INT
 
 
 class ImageNetteDataset(Dataset):
-    def __init__(self, path, transform=None):
+    def __init__(self, path, transform=None, img_ext="png"):
         self.transform = transform
-        self.image_paths = glob.glob(os.path.join(path, "**/*.JPEG"), recursive=True)
+        self.image_paths = glob.glob(os.path.join(path, f"**/*.{img_ext}"), recursive=True)
 
     def __len__(self):
         return len(self.image_paths)
@@ -29,8 +29,3 @@ class ImageNetteDataset(Dataset):
         label = LBL_2_INT[label_encoding]
 
         return {"image": image, "label": label}
-
-
-def get_dataloader(dset, batch_size=32, shuffle=True, num_workers=0):
-    dl = DataLoader(dset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
-    return dl
