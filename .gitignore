@@ -135,9 +135,9 @@ dmypy.json
 
 # Datasets
 # DIV2K
-DIV2K_train_HR/
-DIV2K_valid_HR/
+div2k_dataset/DIV2K_train_HR/
+div2k_dataset/DIV2K_valid_HR/
 # ImageNette
-imagenette2-160/
-imagenette2-320/
-imagenette2/
+imagenette_dataset/imagenette2-160/
+imagenette_dataset/imagenette2-320/
+imagenette_dataset/imagenette2/
