@@ -1,3 +1,6 @@
 [submodule "div2k_dataset/bsrgan_degradation_model"]
 	path = div2k_dataset/bsrgan_degradation_model
 	url = git@github.com:BVlad917/bsrgan_degradation_model.git
+[submodule "div2k_dataset/matlab_imresize"]
+	path = div2k_dataset/matlab_imresize
+	url = git@github.com:BVlad917/matlab_imresize.git
