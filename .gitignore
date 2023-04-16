@@ -131,3 +131,13 @@ dmypy.json
 
 # PyCharm
 .idea/
+
+
+# Datasets
+# DIV2K
+DIV2K_train_HR/
+DIV2K_valid_HR/
+# ImageNette
+imagenette2-160/
+imagenette2-320/
+imagenette2/
