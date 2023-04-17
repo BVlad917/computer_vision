@@ -106,8 +106,10 @@ def numpy_2_tensor(arr):
 
 
 def convolutional_output_size(in_size, padding, kernel_size, stride):
+    # find the size (H/W) of the output of a convolutional layer
     return np.floor((in_size + 2 * padding - kernel_size) / stride) + 1
 
 
 def find_same_padding(in_size, kernel_size, stride):
+    # find the size of the padding for "same" padding
     return np.ceil(((stride - 1) * in_size - stride + kernel_size) / 2)
