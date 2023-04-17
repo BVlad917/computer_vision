@@ -141,3 +141,6 @@ imagenette_dataset/imagenette_data/
 
 # ignore any jupyter notebooks
 *.ipynb
+
+# Tensorboard
+runs/
