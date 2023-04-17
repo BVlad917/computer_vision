@@ -30,6 +30,7 @@ def accuracy(y_true, y_pred):
 def train_step(model, data_loader, loss_fn, optimizer, accuracy_fn, device, use_tqdm=False):
     train_loss, train_acc = 0, 0
     start = time.time()
+    model.train()
     for batch in tqdm(data_loader, disable=not use_tqdm):
         # Send data to GPU
         X = batch["image"].to(device)
