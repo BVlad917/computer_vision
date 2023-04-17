@@ -38,10 +38,12 @@ class Div2KDataset(Dataset):
         # Either apply MATLAB bicubic down-sampling or BSRGAN+ complex degradation
         if random.random() < self.apply_bicubic:
             size = self.lq_patch_size * self.scale_factor
+            # either use center crop or random crop
             crop_fn = A.CenterCrop if self.use_center_crop else A.RandomCrop
             img_hq = crop_fn(height=size, width=size)(image=img)["image"]
             img_lq = matlab_imresize(img_hq, output_shape=(self.lq_patch_size, self.lq_patch_size))
-            img_lq, img_hq = map(lambda image: util.uint2single(image), (img_lq, img_hq))
+            # (PATCH_SIZE, PATCH_SIZE, C)
+            img_lq, img_hq = map(lambda image: util.uint2single(image), (img_lq, img_hq))  # convert to range [0, 1]
         else:
             img = util.uint2single(img)  # convert to range [0, 1] (expected by "blindsr.degradation_bsrgan_plus")
             img_lq, img_hq = blindsr.degradation_bsrgan_plus(img,
