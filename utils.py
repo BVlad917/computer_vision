@@ -103,3 +103,11 @@ def tensor_2_numpy(t):
 def numpy_2_tensor(arr):
     # convert a (H, W, C) numpy array to a (C, H, W) pytorch tensor
     return torch.from_numpy(np.transpose(arr, (0, 1, 2)))
+
+
+def convolutional_output_size(in_size, padding, kernel_size, stride):
+    return np.floor((in_size + 2 * padding - kernel_size) / stride) + 1
+
+
+def find_same_padding(in_size, kernel_size, stride):
+    return np.ceil(((stride - 1) * in_size - stride + kernel_size) / 2)
