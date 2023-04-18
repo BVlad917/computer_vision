@@ -39,19 +39,3 @@ class PSNR(nn.Module):
         psnr_metrics = 10 * torch.log10_(255.0 ** 2 / mse_value)
 
         return psnr_metrics
-
-
-all_psnr = torch.empty(0)
-psnr_model = PSNR(crop_border=0)
-
-a = torch.rand(4, 3, 24, 24)
-b = torch.rand(4, 3, 24, 24)
-psnr_batch1 = psnr_model(lr=b, gt=a)
-all_psnr = torch.cat((all_psnr, psnr_batch1))
-
-a = torch.rand(4, 3, 24, 24)
-b = torch.rand(4, 3, 24, 24)
-psnr_batch2 = psnr_model(lr=b, gt=a)
-all_psnr = torch.cat((all_psnr, psnr_batch2))
-
-print(all_psnr.mean().item())
