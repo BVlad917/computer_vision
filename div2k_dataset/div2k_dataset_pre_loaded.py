@@ -11,7 +11,7 @@ class Div2KDatasetPreLoaded(Dataset):
     def __getitem__(self, index):
         gt_path = self.gt_imgs[index]
         lq_path = gt_path.replace("gt", "lq")
-        gt, lq = map(lambda path: read_image(path), (gt_path, lq_path))
+        gt, lq = map(lambda path: read_image(path) / 255., (gt_path, lq_path))
         return {"gt": gt, "lq": lq}
 
     def __len__(self):
