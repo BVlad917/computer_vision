@@ -3,11 +3,11 @@ import cv2
 import albumentations as A
 
 # transforms to apply to images BEFORE applying BSRGAN+ degradation model
-transforms = A.Compose([
+transforms = A.OneOf([
     A.Rotate(interpolation=cv2.INTER_NEAREST, border_mode=cv2.BORDER_CONSTANT, p=0.5),
     A.HorizontalFlip(p=0.5),
     A.VerticalFlip(p=0.5),
-])
+], p=0.2)
 
 
 def download_div2k_data(is_train, is_hr=True, down_sample_mode=None, down_sample_factor=None, data_dir="./div2k_data/"):
@@ -30,7 +30,7 @@ def download_div2k_data(is_train, is_hr=True, down_sample_mode=None, down_sample
     train_or_valid = "train" if is_train else "valid"
     hr_or_lr = "HR" if is_hr else "LR"
 
-    data_source = "http://data.vision.ee.ethz.ch/cvl/DIV2K/"  # link to DIV2K data
+    data_source = "https://data.vision.ee.ethz.ch/cvl/DIV2K/"  # link to DIV2K data
 
     # construct the exact data file we want, based on the given function arguments
     file_name = "DIV2K_"
